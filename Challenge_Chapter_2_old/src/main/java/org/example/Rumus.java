@@ -10,16 +10,7 @@ public class Rumus{
     static int satu = 0, dua = 0, tiga = 0, empat = 0, lima = 0 , enam = 0 , tujuh = 0 ,
             delapan = 0 , sembilan = 0 , sepuluh = 0, dibawah_lima = 0;
 
-    static double banyak_data = 0, jumlah = 0, mean, median, modus;
-
-    public static double getModus() {
-        return modus;
-    }
-
-    public static void setModus(double modus) {
-        Rumus.modus = modus;
-    }
-
+    static double banyak_data = 0, jumlah = 0, mean = 0;
     protected void meanRumus(){
 
 //        double sum = 0;
@@ -49,39 +40,34 @@ public class Rumus{
 
     protected void medianRumus(){
 
-        double md;
-
-        if (ReadData.list_nilai.size() % 2 == 0) {
-            md = Integer.parseInt(String.valueOf(ReadData.list_nilai.get((ReadData.list_nilai.size()-1) / 2)));
+        bubbleSort();
+        int n = ReadData.data.length;
+        double median;
+        if (n % 2 == 0) {
+            median = (ReadData.data[n/2-1] + ReadData.data[n/2]) / 2.0;
         } else {
-            double angka1 = (Integer.parseInt(String.valueOf(ReadData.list_nilai.get((ReadData.list_nilai.size()-1) / 2))));
-            double angka2 =(Integer.parseInt(String.valueOf(ReadData.list_nilai.get((ReadData.list_nilai.size()-1) / 2-1))));
-            md=(angka1+angka2)/2;
+            median = ReadData.data[n/2];
         }
-        setMedian(md);
 
-
+        System.out.println("Median: " + median);
 
     }
 
     protected void modusRumus(){
-        int angkaMax=-1, angkaSisa=-1;
-        for (int i =1;i< ReadData.list_nilai.size();i++){
-            int number = Integer.parseInt(String.valueOf(ReadData.list_nilai.get(i)));
-            //sum +=number;
-            int count =0;
-            for(int j=0;j< ReadData.list_nilai.size();j++){
-                if(ReadData.list_nilai.get(i) == ReadData.list_nilai.get(j)){
-                    count++;
-                }
-                if(count>angkaSisa){
-                    angkaMax= Integer.parseInt(String.valueOf(ReadData.list_nilai.get(i)));
-                    angkaSisa=count;
-                }
-            }
-        }
-        setModus(angkaMax);
-        System.out.println("Modus: " + getModus());
+//        int n = ReadData.data.length;
+//        double maxValue = 0, maxCount = 0;
+//        for (int i = 0; i < n; ++i) {
+//            int count = 0;
+//            for (int j = 0; j < n; ++j) {
+//                if (ReadData.data[j] == ReadData.data[i])
+//                    ++count;
+//            }
+//            if (count > maxCount) {
+//                maxCount = count;
+//                maxValue = ReadData.data[i];
+//            }
+//        }
+//        System.out.println("Modus: " + maxValue);
 
 
     }
@@ -90,16 +76,21 @@ public class Rumus{
         return mean;
     }
 
-    public static double getMedian() {
-        return median;
-    }
-
-    public static void setMedian(double median) {
-        Rumus.median = median;
-    }
-
     public static void setMean(double mean) {
         Rumus.mean = mean;
+    }
+
+    private void bubbleSort() {
+        int n = ReadData.data.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (ReadData.data[j] > ReadData.data[j + 1]) {
+                    double temp = ReadData.data[j];
+                    ReadData.data[j] = ReadData.data[j + 1];
+                    ReadData.data[j + 1] = temp;
+                }
+            }
+        }
     }
 
 }
