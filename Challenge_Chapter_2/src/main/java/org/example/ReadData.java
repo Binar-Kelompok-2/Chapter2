@@ -17,7 +17,7 @@ public class ReadData extends Rumus{
         */
         String regex = "\\b([1-9]|[1-9][0-9]|100)\\b";
         try {
-            String csvFile = "src/main/resources/CsvFile/data_sekolah.csv";
+            String csvFile = "D:\Kuliah\KM\Chapter2-main\Challenge_Chapter_2\src\main\resources\CsvFile\data_sekolah.csv";
             //membaca setiap line
             String line = "";
             //pemisah
