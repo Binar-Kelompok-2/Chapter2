@@ -5,35 +5,24 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class ReadData extends Rumus{
+    protected static double[] data;
     static ArrayList<String[]> dataArrayList = new ArrayList<>();
     static ArrayList list_nilai = new ArrayList();
     protected void readCsv() throws IOException {
-        /*
-            - \b digunakan untuk menandakan kata yang berdiri sendiri, sehingga hanya mencocokkan angka dan tidak mencocokkan angka di tengah kata.
-            - [1-9] mencocokkan angka dari 1 hingga 9.
-            - [1-9][0-9] mencocokkan angka dari 10 hingga 99.
-            - 100 mencocokkan angka 100.
-            - | digunakan untuk memisahkan pola mencocokkan.
-        */
-        String regex = "\\b([1-9]|[1-9][0-9]|100)\\b";
+
+        String regex = "[0-9]";
         try {
             String csvFile = "src/main/resources/CsvFile/data_sekolah.csv";
-            //membaca setiap line
             String line = "";
-            //pemisah
             String csvDelimiter = ";";
 
             BufferedReader br = new BufferedReader(new FileReader(csvFile));
-            //selama ada line yang bisa di baca dan tidak kosong
             while ((line = br.readLine()) != null) {
-                //pisah setiap line yang mengandung ;
+
                 String[] data = line.split(csvDelimiter);
-                //masukan ke dataArrayList
                 dataArrayList.add(data);
-                //ulangi hingga datanya habis
             }
 
-            //menampilkan error jika file tidak di temukan
         } catch (IOException e) {
             System.err.println("Cek Lagi Apakah Penamaan Atau Lokasi Benar Ada Di src/main/resources/CsvFile");
             System.err.println("Dan Apakah File Tersebut 'data_sekolah.csv'");
@@ -41,24 +30,17 @@ public class ReadData extends Rumus{
 
         }
 
-        // dibawah ini untuk print dataArrayList
-
-        // selama inisialisasi string list sebagai row sebanyak dataArraylist
+        // print the dataArrayList
         for (String[] row : dataArrayList) {
-            //selama inisialisasi value sebanyak row
             for (String value : row) {
                 System.out.print(value + "\t");
-
-                // melakukan pattern di compile sesuai dengan regex
+                //pake value
                 Pattern pattern = Pattern.compile(regex);
-                // maka akan di cocokkan
-                // value di cek dengan matcher jika match
-                if (pattern.matcher(value).matches()) { // checker dan memasukan hanya angka kedalam list
-                    //masukan ke list_nilai
+                if (pattern.matcher(value).matches()) { // checker
+
                     list_nilai.add(value);
 
                 }
-                // ini untuk memasukan data ke frekuensi karena tidak menemukan cara menggunakan java collection
                 if(value.equals("1")){
                     satu++;
                     dibawah_lima++;
@@ -97,6 +79,24 @@ public class ReadData extends Rumus{
             System.out.println();
 
         }
+//        data = new double[dataArrayList.size()];
+//        for (int i = 0; i < dataArrayList.size(); i++) {
+//            try {
+//                data[i] = Double.parseDouble(Arrays.toString(dataArrayList.get(i)));
+//            }
+//            catch (NumberFormatException e){
+//                System.out.println(e);
+//                System.out.println("error");
+//
+//            }
+//        }
+
+//        String[] input = {"2.5", "1.2", "3.7", "4.1", "2.0"};
+//        double[] data = new double[input.length];
+//
+//        for (int i = 0; i < input.length; i++) {
+//            data[i] = Double.parseDouble(input[i]);
+//        }
     }
 
 }

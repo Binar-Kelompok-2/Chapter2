@@ -5,33 +5,14 @@ import java.util.Scanner;
 
 public class Main extends ReadData {
 
-    protected static Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws IOException {
         Tampil();
     }
     private static void Tampil() throws IOException {
-        dataArrayList.clear();
-        list_nilai.clear();
-        jumlah = 0;
-        satu = 0;
-        dua = 0;
-        tiga = 0;
-        empat = 0;
-        lima = 0;
-        enam = 0;
-        tujuh = 0;
-        delapan = 0;
-        sembilan = 0;
-        sepuluh = 0;
-        dibawah_lima = 0;
-
-        /*
-           di setting clear semua atau default baru di balikan ke method tampil
-           klo tidak nnt datanya malah  terus bertambah
-        */
-
         ReadData read = new ReadData();
         read.readCsv();
+        MeanMedianModusFrekuensi rumus = new MeanMedianModusFrekuensi();
         CreateFolderAndFile createFolderAndFile = new CreateFolderAndFile();
 
         System.out.println("----------------------------------------");
@@ -47,11 +28,9 @@ public class Main extends ReadData {
         System.out.println("0. Exit");
         System.out.print("Pilihan : ");
         int pilihan = sc.nextInt() ;
-        //rumus di jalankan dulu klo tidak nnt tidak terbaca
-        read.modusRumus();
-        read.medianRumus();
-        read.meanRumus();
-
+        rumus.modusRumus();
+        rumus.medianRumus();
+        rumus.meanRumus();
         switch (pilihan){
             case 1 -> {
 
@@ -69,12 +48,12 @@ public class Main extends ReadData {
             case 3 -> {
                 createFolderAndFile.createBoth();
                 createFolderAndFile.createFrekuensi();
-
                 perulangan();
             }
             case 0 -> System.exit(0);
             default -> {System.out.println("Input Error");
                 Tampil();
+
             }
         }
     }
@@ -84,6 +63,26 @@ public class Main extends ReadData {
         System.out.println("Tekan N Untuk Keluar Dari Program");
         String ulang = sc.next();
         if(ulang.toLowerCase().equals("y")){
+            dataArrayList.clear();
+            jumlah = 0;
+            banyak_data = 0;
+            satu = 0;
+            dua = 0;
+            tiga = 0;
+            empat = 0;
+            lima = 0;
+            enam = 0;
+            tujuh = 0;
+            delapan = 0;
+            sembilan = 0;
+            sepuluh = 0;
+            dibawah_lima = 0;
+
+            /*
+            di setting clear semua atau default baru di balikan ke method tampil
+            klo tidak nnt datanya malah  terus bertambah
+            */
+
             Tampil();
         }
         else if(ulang.toLowerCase().equals("n")){

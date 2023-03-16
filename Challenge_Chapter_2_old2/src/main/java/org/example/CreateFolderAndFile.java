@@ -3,17 +3,16 @@ package org.example;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CreateFolderAndFile extends Rumus{
 
-    String customDirectory = "C:\\";
-    String folderName = "Temp_Chapter2";
-    String fileName;
-
-    File folder = new File(customDirectory + "/" + folderName);
 
     protected void createModus(){
-        // membuat directory folder di dalam custom directory
+        // create the directory folder in a custom directory
+        String customDirectory = "C:\\";
+        String folderName = "Temp_Chapter2";
+        File folder = new File(customDirectory + "/" + folderName);
         if (!folder.exists()) {
             folder.mkdirs();
             System.out.println("folder dibuat di: " + folder.getAbsolutePath());
@@ -21,8 +20,8 @@ public class CreateFolderAndFile extends Rumus{
             System.out.println("folder sudah ada di" + folder.getAbsolutePath());
         }
 
-        // membuat file baru di dalam directory folder
-        fileName = "Data Modus.txt";
+        // create a new file inside the directory folder
+        String fileName = "Data Modus.txt";
         File file = new File(folder.getAbsolutePath() + "/" + fileName);
         if (!file.exists()) {
             try {
@@ -35,7 +34,7 @@ public class CreateFolderAndFile extends Rumus{
             System.out.println("File sudah ada di : " + file.getAbsolutePath());
         }
 
-        // menulis data ke file
+        // write some data to the file
         try {
             FileWriter writer = new FileWriter(file);
             writer.write("Modus : " + getModus());
@@ -49,7 +48,10 @@ public class CreateFolderAndFile extends Rumus{
     }
 
     protected void createMeanMedian(){
-        // membuat directory folder di dalam custom directory
+        // create the directory folder in a custom directory
+        String customDirectory = "C:\\";
+        String folderName = "Temp_Chapter2";
+        File folder = new File(customDirectory + "/" + folderName);
         if (!folder.exists()) {
             folder.mkdirs();
             System.out.println("folder dibuat di : " + folder.getAbsolutePath());
@@ -57,8 +59,8 @@ public class CreateFolderAndFile extends Rumus{
             System.out.println("folder sudah ada di :" + folder.getAbsolutePath());
         }
 
-        // membuat file baru di dalam directory folder
-        fileName = "Data Mean & Median.txt";
+        // create a new file inside the directory folder
+        String fileName = "Data Mean & Median.txt";
         File file = new File(folder.getAbsolutePath() + "/" + fileName);
         if (!file.exists()) {
             try {
@@ -72,7 +74,7 @@ public class CreateFolderAndFile extends Rumus{
         }
 
 
-        // menulis data ke file
+        // write some data to the file
         try {
             FileWriter writer = new FileWriter(file);
             writer.write("Mean : "+getMean() + "\n"+"Median :"+getMedian()); //jika seperti ini tidak perlu parsing
@@ -86,7 +88,10 @@ public class CreateFolderAndFile extends Rumus{
     }
 
     protected void createBoth() {
-        // membuat directory folder di dalam custom directory
+        // create the directory folder in a custom directory
+        String customDirectory = "C:\\";
+        String folderName = "Temp_Chapter2";
+        File folder = new File(customDirectory + "/" + folderName);
         if (!folder.exists()) {
             folder.mkdirs();
             System.out.println("folder dibuat di : " + folder.getAbsolutePath());
@@ -94,8 +99,8 @@ public class CreateFolderAndFile extends Rumus{
             System.out.println("folder sudah ada di : " + folder.getAbsolutePath());
         }
 
-        // membuat file baru di dalam directory folder
-        fileName = "Data Modus, Mean & Median.txt";
+        // create a new file inside the directory folder
+        String fileName = "Data Modus, Mean & Median.txt";
         File file = new File(folder.getAbsolutePath() + "/" + fileName);
         if (!file.exists()) {
             try {
@@ -108,7 +113,7 @@ public class CreateFolderAndFile extends Rumus{
             System.out.println("File sudah ada di : " + file.getAbsolutePath());
         }
 
-        // menulis data ke file
+        // write some data to the file
         try {
             FileWriter writer = new FileWriter(file);
             writer.write("Modus : "+getModus() +"\n");
@@ -121,7 +126,10 @@ public class CreateFolderAndFile extends Rumus{
     }
 
     protected void createFrekuensi(){
-        // membuat directory folder di dalam custom directory
+        // create the directory folder in a custom directory
+        String customDirectory = "C:\\";
+        String folderName = "Temp_Chapter2";
+        File folder = new File(customDirectory + "/" + folderName);
         if (!folder.exists()) {
             folder.mkdirs();
             System.out.println("folder dibuat di : " + folder.getAbsolutePath());
@@ -129,8 +137,8 @@ public class CreateFolderAndFile extends Rumus{
             System.out.println("folder sudah ada di : " + folder.getAbsolutePath());
         }
 
-        // membuat file baru di dalam directory folder
-        fileName = "Frekuensi.txt";
+        // create a new file inside the directory folder
+        String fileName = "Frekuensi.txt";
         File file = new File(folder.getAbsolutePath() + "/" + fileName);
         if (!file.exists()) {
             try {
@@ -143,18 +151,17 @@ public class CreateFolderAndFile extends Rumus{
             System.out.println("File sudah ada di : " + file.getAbsolutePath());
         }
 
-        // menulis data ke file
+        // write some data to the file
         try {
             FileWriter writer = new FileWriter(file);
-            writer.write("Nilai \t \t \t \t | Frekensi \n");
-            writer.write("Jumlah Nilai Dibawah Lima \t |\t" + dibawah_lima +"\n");
-            writer.write("5 \t \t \t \t \t |\t" + lima +"\n");
-            writer.write("6 \t \t \t \t \t |\t" + enam +"\n");
-            writer.write("7 \t \t \t \t \t |\t" + tujuh +"\n");
-            writer.write("8 \t \t \t \t \t |\t" + delapan +"\n");
-            writer.write("9 \t \t \t \t \t |\t" + sembilan +"\n");
-            writer.write("10 \t \t \t \t \t |\t" + sepuluh +"\n \n");
-            writer.write("Jumlah Frekuensi \t \t \t |\t" + ReadData.list_nilai.size() +"\n");
+            writer.write("Nilai \t \t \t \t | Frekensi \n"); //masih error
+            writer.write("Jumlah Nilai Dibawah Lima \t |\t" + dibawah_lima +"\n"); //masih error
+            writer.write("5 \t \t \t \t \t |\t" + lima +"\n"); //masih error
+            writer.write("6 \t \t \t \t \t |\t" + enam +"\n"); //masih error
+            writer.write("7 \t \t \t \t \t |\t" + tujuh +"\n"); //masih error
+            writer.write("8 \t \t \t \t \t |\t" + delapan +"\n"); //masih error
+            writer.write("9 \t \t \t \t \t |\t" + sembilan +"\n"); //masih error
+            writer.write("10 \t \t \t \t \t |\t" + sepuluh +"\n"); //masih error
             writer.close();
             System.out.println("Data ditulis kedalam file : " + file.getAbsolutePath());
         } catch (IOException e) {
